@@ -10,9 +10,9 @@ import { useMutation } from "react-query";
 
 function Todo(props) {
 
-    const mutation = useMutation(newTodo => axios.put('api/todos/'+ todo.id, {tiele: todo.tiele}));
-
-    const [timer, setTimer] = useState(null);
+    const mutation = useMutation(newTodo => {
+        return axios.put('api/todos/'+ todo.id, {tiele: todo.tiele});
+    });
 
     let todo = {
       id: props.todo.id,
@@ -21,17 +21,18 @@ function Todo(props) {
 
     // const { updateTodoMutation } = useUpdateTodoMutateTask();
     const eventUpdateTodo = (event) => {
-      clearTimeout(timer);
-
-      const newTimer = setTimeout(() => {
 
         todo.tiele = event.target.value;
-console.log(todo);
-        mutation.mutate(todo);
-      }, 500);
+        console.log(prop.detail.id)
 
-      setTimer(newTimer);
+        mutation.mutate(todo);
     };
+    if (mutation.isLoading) return 'Loading...';
+
+    if (mutation.isError) return 'mutation.error.message';
+
+
+
 
   return (
       <Card>
@@ -48,6 +49,7 @@ console.log(todo);
                   })}
               </List>
           </CardContent>
+          {mutation.isSuccess ? <div onClick={() => mutation.reset()}>updated!</div> : null}
       </Card>
 
   );

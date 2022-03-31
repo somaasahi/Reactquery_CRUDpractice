@@ -86,8 +86,6 @@ Log::debug(session()->get('key'));
      */
     public function update(UpdateRequest $request, $id)
     {
-        Log::debug('jjj');
-        Log::debug($request->all());
         $todo = Todo::find($id);
         $todo->tiele = $request->get('tiele');
         $todo->save();
@@ -101,7 +99,6 @@ Log::debug(session()->get('key'));
      */
     public function destroy($id)
     {
-        $todo = Todo::find($id);
-        $todo->delete();
+        Todo::where('id', $id)->delete();
     }
 }

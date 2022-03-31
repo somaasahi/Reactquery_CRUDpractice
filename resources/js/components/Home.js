@@ -1,7 +1,6 @@
 import { Grid } from "@mui/material";
 import React from "react";
 import Todo from "./Todo";
-import { useGetTodoList, useCurrentTodoList } from "../hooks/TodoList";
 import { useQuery } from "react-query";
 
 function Home() {

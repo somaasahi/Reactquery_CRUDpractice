@@ -88,7 +88,6 @@ class TodoDetailController extends Controller
      */
     public function destroy($id)
     {
-        $todoDetail = TodoDetail::find($id);
-        $todoDetail->delete();
+        TodoDetail::where('id', $id)->delete();
     }
 }
