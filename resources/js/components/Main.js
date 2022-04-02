@@ -7,7 +7,7 @@ import Example from "./Example";
 import Navigation from "./Navigation";
 import Home from "./Home";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query-devtools";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 const client = new QueryClient();
 
@@ -25,9 +25,9 @@ function Main() {
                         </Routes>
                     </main>
                 </BrowserRouter>
-
-                {/* <ReactQueryDevtools initialIsOpen={false} /> */}
+                <ReactQueryDevtools initialIsOpen={false} />
             </QueryClientProvider>
+
         </BOX>
     );
 }
