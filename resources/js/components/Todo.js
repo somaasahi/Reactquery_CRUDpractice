@@ -23,7 +23,6 @@ function Todo(props) {
     const eventUpdateTodo = (event) => {
 
         todo.tiele = event.target.value;
-        console.log(prop.detail.id)
 
         mutation.mutate(todo);
     };

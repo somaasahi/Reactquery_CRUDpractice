@@ -9,26 +9,32 @@ import {
 } from "@mui/material";
 import React from "react";
 import axios from "axios";
-import { useMutation } from "react-query";
+import { QueryClient, useMutation } from "react-query";
+
+
+const client = new QueryClient();
 
 function TodoDetail(props) {
 
     const mutation = useMutation(newTodo => {
-        return axios.delete('api/todoDetails/'+ todo.id);
+        return axios.delete('api/todoDetails/'+ props.detail.id);
     });
 
-    let todo = {
-        id: props.detail.id,
-      };
+    // let todo = {
+    //     id: props.detail.id,
+    //   };
 
     const deleteTodoDetail = () => {
-        mutation.mutate(todo);
-        console.log(todo);
+        mutation.mutate(props.detail.id);
     };
     if (mutation.isLoading) return 'Loading...';
 
-    if (mutation.isError) return 'mutation.error.message';
+    if (mutation.isError) return mutation.error.message;
 
+    if (mutation.isSuccess) {
+
+         client.invalidateQueries('todos');
+    }
     return (
         <ListItem
             key={props.id}
