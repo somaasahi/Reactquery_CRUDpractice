@@ -28,7 +28,7 @@ function Todo(props) {
     };
     if (mutation.isLoading) return 'Loading...';
 
-    if (mutation.isError) return 'mutation.error.message';
+    if (mutation.isError) return mutation.error.message;
 
 
 

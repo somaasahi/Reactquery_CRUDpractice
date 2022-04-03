@@ -19,15 +19,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-
         $todos = Todo::with('todoDetails')->get();
-// var_dump('tes');
-//         if (session()->all() !== NULL) {
-//             var_dump(session()->get('key'));
-//         }
-
-
-Log::debug(session()->get('key'));
         return $todos;
     }
 
@@ -38,17 +30,22 @@ Log::debug(session()->get('key'));
      */
     public function create()
     {
-        //
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreRequest $request)
+
+    // public function store(Request $request)
+    // {
+    //     Log::debug($request->get('tiele'));
+
+    //     $todo = new Todo();
+    //     $todo->tiele = $request->get('tiele');
+    //     $todo->save();
+    // }
+
+    public function post(Request $request)
     {
+        Log::debug($request->get('tiele'));
 
         $todo = new Todo();
         $todo->tiele = $request->get('tiele');
@@ -63,7 +60,7 @@ Log::debug(session()->get('key'));
      */
     public function show($id)
     {
-        //
+
     }
 
     /**
@@ -74,7 +71,7 @@ Log::debug(session()->get('key'));
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -86,6 +83,7 @@ Log::debug(session()->get('key'));
      */
     public function update(UpdateRequest $request, $id)
     {
+
         $todo = Todo::find($id);
         $todo->tiele = $request->get('tiele');
         $todo->save();

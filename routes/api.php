@@ -22,3 +22,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('todos', TodoController::class);
 Route::resource('todoDetails', TodoDetailController::class);
+
+Route::post('todos/post', [TodoController::class, 'post']);
