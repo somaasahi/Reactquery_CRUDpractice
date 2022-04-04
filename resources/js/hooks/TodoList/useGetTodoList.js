@@ -10,7 +10,6 @@ const getTodoList = async () => {
 
 const useGetTodoList = () => {
     const queryClient = useQueryClient();
-    console.log("kkkk");
     // getTodoListで取得したデータに名前をつけ、コンポーネントを跨いでも使えるようにするのがuseQuery
     // エラーが起きた際にはonErrorでtodoListにnullをセット
     return useQuery("todoList", getTodoList, {

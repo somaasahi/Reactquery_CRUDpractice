@@ -1,13 +1,30 @@
 import { Button, TextField } from "@mui/material";
 import axios from "axios";
-import { useMutation } from "react-query";
+import { useState } from "react";
+import { useQueryClient, useMutation } from "react-query";
+
+
 
 
 function TodoForm() {
 
-    const mutation = useMutation(newTodo => {
-        return axios.post('/api/todos/post',{tiele: todo.tiele});
-    });
+        const queryClient = useQueryClient();
+
+        const mutation = useMutation(
+            () =>
+            axios.post("/api/todos/post",{tiele: todo.tiele}),
+            {
+            onSettled: () => {
+                queryClient.invalidateQueries("todos");
+            },
+            }
+        );
+        // console.log(storeToDoMutation);
+
+
+    // const mutation = useMutation(newTodo => {
+    //     return axios.post('/api/todos/post',{tiele: todo.tiele});
+    // });
 
     let todo = {
         tiele: ""
@@ -19,18 +36,16 @@ function TodoForm() {
 
     };
 
-    const postForm = () => {
+    const postForm = (event) => {
 
-        mutation.mutate(todo.tiele);
+        mutation.mutate();
     }
-    if (mutation.isLoading) return 'Loading...';
 
-    if (mutation.isError) return mutation.error.message;
+    // if (mutation.isLoading) return 'Loading...';
 
-    if (mutation.isSuccess) {
+    // if (mutation.isError) return mutation.error.message;
 
-         console.log('ok');
-    }
+
 
     return (
         <div>
