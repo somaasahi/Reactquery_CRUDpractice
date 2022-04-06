@@ -9,32 +9,52 @@ import {
 } from "@mui/material";
 import React from "react";
 import axios from "axios";
-import { QueryClient, useMutation } from "react-query";
+import { useQueryClient, useMutation } from "react-query";
 
-
-const client = new QueryClient();
 
 function TodoDetail(props) {
 
-    const mutation = useMutation(newTodo => {
-        return axios.delete('api/todoDetails/'+ props.detail.id);
-    });
+    const queryClient = useQueryClient();
 
-    // let todo = {
-    //     id: props.detail.id,
-    //   };
+    const mutation = useMutation(updateTodo, {
+        // When mutate is called:
+        // onMutate: async newTodo => {
+        //   // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
+        //   await queryClient.cancelQueries('todos')
 
-    const deleteTodoDetail = () => {
-        mutation.mutate(props.detail.id);
+        //   // Snapshot the previous value
+        //   const previousTodos = queryClient.getQueryData('todos')
+
+        //   // Optimistically update to the new value
+        //   queryClient.setQueryData('todos', old => [...old, newTodo])
+
+        //   // Return a context object with the snapshotted value
+        //   return { previousTodos }
+        // },
+        // // If the mutation fails, use the context returned from onMutate to roll back
+        // onError: (err, newTodo, context) => {
+        //   queryClient.setQueryData('todos', context.previousTodos)
+        // },
+        // Always refetch after error or success:
+        onSettled: () => {
+          queryClient.invalidateQueries('todos')
+        },
+      });
+
+    const deleteTodoDetail = (event) => {
+
+        mutation.mutate();
     };
+
     if (mutation.isLoading) return 'Loading...';
 
     if (mutation.isError) return mutation.error.message;
 
     if (mutation.isSuccess) {
 
-         client.invalidateQueries('todos');
+        //  console.log('ok');
     }
+
     return (
         <ListItem
             key={props.id}
