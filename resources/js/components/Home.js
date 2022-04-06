@@ -4,6 +4,7 @@ import Todo from "./Todo";
 import { useQuery } from "react-query";
 import axios from "axios";
 import TodoForm from "./TodoForm";
+import SearchBox from "./SearchBox";
 
 // function getPosts() {
 //     return useQuery("todos", async () => {
@@ -41,6 +42,7 @@ function Home() {
                     </Grid>
                 ))}
             </Grid>
+            <SearchBox />
         </div>
     );
 }

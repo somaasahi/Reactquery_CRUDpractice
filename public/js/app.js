@@ -28281,19 +28281,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Grid/Grid.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Grid/Grid.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var _Todo__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Todo */ "./resources/js/components/Todo.js");
 /* harmony import */ var react_query__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-query */ "./node_modules/react-query/es/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _TodoForm__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./TodoForm */ "./resources/js/components/TodoForm.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _SearchBox__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./SearchBox */ "./resources/js/components/SearchBox.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 
 
 
@@ -28352,20 +28354,20 @@ function Home() {
 
   if (isLoading) return "Loading...";
   if (error) return "An error has occurred: " + error.message;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_TodoForm__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_TodoForm__WEBPACK_IMPORTED_MODULE_5__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
       container: true,
       spacing: 2,
       children: data.map(function (todo) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_7__["default"], {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_8__["default"], {
           item: true,
           xs: 2,
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_Todo__WEBPACK_IMPORTED_MODULE_2__["default"], {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_Todo__WEBPACK_IMPORTED_MODULE_2__["default"], {
             todo: todo
           })
         }, todo.id);
       })
-    })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_SearchBox__WEBPACK_IMPORTED_MODULE_6__["default"], {})]
   });
 }
 
@@ -28496,6 +28498,98 @@ function Navigation() {
 
 /***/ }),
 
+/***/ "./resources/js/components/SearchBox.js":
+/*!**********************************************!*\
+  !*** ./resources/js/components/SearchBox.js ***!
+  \**********************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/TextField/TextField.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Checkbox/Checkbox.js");
+/* harmony import */ var _mui_material__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @mui/material */ "./node_modules/@mui/material/Button/Button.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+
+function SearchBox(props) {
+  var search = {
+    keyword: "",
+    num1: false,
+    num2: false,
+    num3: false
+  };
+
+  var getForm = function getForm(event) {
+    search.keyword = event.target.value;
+  };
+
+  var check1 = function check1(event) {
+    if (search.num1) {
+      search.num1 = false;
+    } else {
+      search.num1 = true;
+    }
+
+    search.num1 = true;
+  };
+
+  var check2 = function check2(event) {
+    if (search.num2) {
+      search.num2 = false;
+    } else {
+      search.num2 = true;
+    }
+  };
+
+  var check3 = function check3(event) {
+    if (search.num3) {
+      search.num3 = false;
+    } else {
+      search.num3 = true;
+    }
+  };
+
+  var searchPost = function searchPost(event) {
+    // mutation.mutate();
+    console.log(search);
+  };
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_1__["default"], {
+      id: "outlined-basic",
+      variant: "outlined",
+      onChange: getForm
+    }), search.num1 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+      onClick: function onClick() {
+        return mutation.reset();
+      },
+      children: "updated!"
+    }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      color: "secondary",
+      onClick: check1
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      color: "success",
+      onClick: check2
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      color: "default",
+      onClick: check3
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      onClick: searchPost,
+      children: "seach"
+    })]
+  });
+}
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (SearchBox);
+
+/***/ }),
+
 /***/ "./resources/js/components/Todo.js":
 /*!*****************************************!*\
   !*** ./resources/js/components/Todo.js ***!
@@ -28606,35 +28700,13 @@ __webpack_require__.r(__webpack_exports__);
 
 function TodoDetail(props) {
   var queryClient = (0,react_query__WEBPACK_IMPORTED_MODULE_2__.useQueryClient)();
-  var mutation = (0,react_query__WEBPACK_IMPORTED_MODULE_2__.useMutation)(updateTodo, {
-    // When mutate is called:
-    // onMutate: async newTodo => {
-    //   // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
-    //   await queryClient.cancelQueries('todos')
-    //   // Snapshot the previous value
-    //   const previousTodos = queryClient.getQueryData('todos')
-    //   // Optimistically update to the new value
-    //   queryClient.setQueryData('todos', old => [...old, newTodo])
-    //   // Return a context object with the snapshotted value
-    //   return { previousTodos }
-    // },
-    // // If the mutation fails, use the context returned from onMutate to roll back
-    // onError: (err, newTodo, context) => {
-    //   queryClient.setQueryData('todos', context.previousTodos)
-    // },
-    // Always refetch after error or success:
+  var mutation = (0,react_query__WEBPACK_IMPORTED_MODULE_2__.useMutation)(function () {
+    return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('api/todoDetails/' + props.detail.id);
+  }, {
     onSettled: function onSettled() {
-      queryClient.invalidateQueries('todos');
+      queryClient.invalidateQueries("todos");
     }
-  }); // const mutation = useMutation(
-  //     () =>
-  //     axios.delete('api/todoDetails/'+ props.detail.id),
-  //     {
-  //     onSettled: () => {
-  //         queryClient.invalidateQueries("todos");
-  //     },
-  //     }
-  // );
+  });
 
   var deleteTodoDetail = function deleteTodoDetail(event) {
     mutation.mutate();

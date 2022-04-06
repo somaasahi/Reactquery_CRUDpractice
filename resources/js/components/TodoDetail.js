@@ -16,30 +16,15 @@ function TodoDetail(props) {
 
     const queryClient = useQueryClient();
 
-    const mutation = useMutation(updateTodo, {
-        // When mutate is called:
-        // onMutate: async newTodo => {
-        //   // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
-        //   await queryClient.cancelQueries('todos')
-
-        //   // Snapshot the previous value
-        //   const previousTodos = queryClient.getQueryData('todos')
-
-        //   // Optimistically update to the new value
-        //   queryClient.setQueryData('todos', old => [...old, newTodo])
-
-        //   // Return a context object with the snapshotted value
-        //   return { previousTodos }
-        // },
-        // // If the mutation fails, use the context returned from onMutate to roll back
-        // onError: (err, newTodo, context) => {
-        //   queryClient.setQueryData('todos', context.previousTodos)
-        // },
-        // Always refetch after error or success:
+    const mutation = useMutation(
+        () =>
+        axios.delete('api/todoDetails/'+ props.detail.id),
+        {
         onSettled: () => {
-          queryClient.invalidateQueries('todos')
+            queryClient.invalidateQueries("todos");
         },
-      });
+        }
+    );
 
     const deleteTodoDetail = (event) => {
 
@@ -52,7 +37,7 @@ function TodoDetail(props) {
 
     if (mutation.isSuccess) {
 
-        //  console.log('ok');
+         console.log('ok');
     }
 
     return (
