@@ -6,25 +6,12 @@ import axios from "axios";
 import TodoForm from "./TodoForm";
 import SearchBox from "./SearchBox";
 
-// function getPosts() {
-//     return useQuery("todos", async () => {
-//       const { data } = await axios.get("api/todos/");
-//       return data;
-//     });
-//   }パターン１
-
 const getTodos = async () => {
     const { data } = await axios.get("api/todos/");
     return data;
 };
 
 function Home() {
-    // const { isLoading, error, data } = useQuery('todo', async () => {
-    // const { data } = await axios.get('api/todos/');
-    // }
-    //   )パターン１−２
-
-    // const { isLoading, error, data } = getTodos();パターン１
 
     const { isLoading, error, data } = useQuery("todos", getTodos);
 

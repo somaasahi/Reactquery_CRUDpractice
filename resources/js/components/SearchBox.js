@@ -1,12 +1,32 @@
 import { Button, Checkbox, TextField } from "@mui/material";
+import { useQuery } from "react-query";
+
+
+// const getTodos = async () => {
+//     const { data } = await axios.get("api/todos/");
+//     return data;
+// };
+// function Home() {
+//     const { isLoading, error, data } = useQuery("todos", getTodos);
+
+// フックを関数の内部で使用する場合は、メソッド名をuseから始めないといけません
+  const getSearch = async () => {
+    const { data } = await axios.get("api/todoDetails/");
+    console.log(data);
+    return data;
+};
 
 function SearchBox(props) {
+
     let search = {
         keyword: "",
         num1: false,
         num2: false,
         num3: false,
     };
+
+    const { isLoading, error, data } = useQuery("todoDetails", getSearch);
+    // console.log(data);
 
     const getForm = (event) => {
         search.keyword = event.target.value;
@@ -34,10 +54,10 @@ function SearchBox(props) {
         }
     };
 
-    const searchPost = (event) => {
-        // mutation.mutate();
-        console.log(search);
-    };
+    const searchPost = () => {
+
+    }
+
 
     return (
         <div>

@@ -6,9 +6,16 @@ use App\Http\Requests\TodoDetail\StoreRequest;
 use App\Http\Requests\TodoDetail\UpdateRequest;
 use App\Models\TodoDetail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TodoDetailController extends Controller
 {
+    public function search()
+    {
+        Log::debug('oko.k');
+        $search = TodoDetail::get();
+        return $search;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,8 +23,12 @@ class TodoDetailController extends Controller
      */
     public function index()
     {
-        //
+        Log::debug('oko.k');
+        $search = TodoDetail::get();
+        return $search;
     }
+
+
 
     /**
      * Show the form for creating a new resource.

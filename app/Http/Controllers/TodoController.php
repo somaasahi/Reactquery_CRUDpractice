@@ -23,6 +23,8 @@ class TodoController extends Controller
         return $todos;
     }
 
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,7 +47,6 @@ class TodoController extends Controller
 
     public function post(Request $request)
     {
-        Log::debug($request->get('tiele'));
 
         $todo = new Todo();
         $todo->tiele = $request->get('tiele');

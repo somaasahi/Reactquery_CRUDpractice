@@ -24,3 +24,4 @@ Route::resource('todos', TodoController::class);
 Route::resource('todoDetails', TodoDetailController::class);
 
 Route::post('todos/post', [TodoController::class, 'post']);
+Route::get('todoDetails', [TodoDetailController::class, 'search']);
