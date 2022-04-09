@@ -1,15 +1,6 @@
-import { Button, Checkbox, TextField } from "@mui/material";
+import { Button, CardContent, Checkbox, List, TextField } from "@mui/material";
 import { useQuery } from "react-query";
-
-
-// const getTodos = async () => {
-//     const { data } = await axios.get("api/todos/");
-//     return data;
-// };
-// function Home() {
-//     const { isLoading, error, data } = useQuery("todos", getTodos);
-
-// フックを関数の内部で使用する場合は、メソッド名をuseから始めないといけません
+import SearchDetail from "./SearchDetail";
 
 
 function SearchBox(props) {
@@ -28,11 +19,14 @@ function SearchBox(props) {
                 num2: search.num2
         }
     });
-        console.log(data);
+
         return data;
     };
     const { isLoading, error, data } = useQuery("todoDetails", getSearch);
 
+    if (isLoading) return "Loading...";
+
+    if (error) return "An error has occurred: " + error.message;
 
 
     const getForm = (event) => {
@@ -54,11 +48,9 @@ function SearchBox(props) {
         }
     };
 
-
     const searchPost = () => {
 
     }
-
 
     return (
         <div>
@@ -71,6 +63,14 @@ function SearchBox(props) {
             <div>true<Checkbox color="secondary" onClick={check1} /></div>
             <div>false<Checkbox color="success" onClick={check2} /></div>
             <Button onClick={searchPost}>seach</Button>
+
+            <CardContent>
+              <List>
+                  {data.map((detail) => {
+                      return <SearchDetail key={detail.id} detail={detail} />
+                  })}
+              </List>
+          </CardContent>
         </div>
     );
 }
