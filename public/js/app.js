@@ -28525,10 +28525,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 function SearchBox(props) {
   var search = {
-    keyword: "aa",
+    keyword: "",
     num1: false,
-    num2: false,
-    num3: false
+    num2: false
   };
 
   var getSearch = /*#__PURE__*/function () {
@@ -28544,8 +28543,7 @@ function SearchBox(props) {
                 params: {
                   search: search.keyword,
                   num1: search.num1,
-                  num2: search.num2,
-                  num3: search.num3
+                  num2: search.num2
                 }
               });
 
@@ -28593,14 +28591,6 @@ function SearchBox(props) {
     }
   };
 
-  var check3 = function check3(event) {
-    if (search.num3) {
-      search.num3 = false;
-    } else {
-      search.num3 = true;
-    }
-  };
-
   var searchPost = function searchPost() {};
 
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
@@ -28613,15 +28603,16 @@ function SearchBox(props) {
         return mutation.reset();
       },
       children: "updated!"
-    }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      color: "secondary",
-      onClick: check1
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      color: "success",
-      onClick: check2
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
-      color: "default",
-      onClick: check3
+    }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: ["true", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        color: "secondary",
+        onClick: check1
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+      children: ["false", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_4__["default"], {
+        color: "success",
+        onClick: check2
+      })]
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_mui_material__WEBPACK_IMPORTED_MODULE_5__["default"], {
       onClick: searchPost,
       children: "seach"

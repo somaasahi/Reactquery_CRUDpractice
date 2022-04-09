@@ -18,7 +18,6 @@ function SearchBox(props) {
         keyword: "",
         num1: false,
         num2: false,
-        num3: false,
     };
 
     const getSearch = async () => {
@@ -26,8 +25,7 @@ function SearchBox(props) {
             params: {
                 search: search.keyword,
                 num1: search.num1,
-                num2: search.num2,
-                num3: search.num3
+                num2: search.num2
         }
     });
         console.log(data);
@@ -55,13 +53,7 @@ function SearchBox(props) {
             search.num2 = true;
         }
     };
-    const check3 = (event) => {
-        if(search.num3) {
-            search.num3 = false;
-        }else{
-            search.num3 = true;
-        }
-    };
+
 
     const searchPost = () => {
 
@@ -76,9 +68,8 @@ function SearchBox(props) {
                 onChange={getForm}
             />
             {search.num1 ? <div onClick={() => mutation.reset()}>updated!</div> : null}
-            <Checkbox color="secondary" onClick={check1} />
-            <Checkbox color="success" onClick={check2} />
-            <Checkbox color="default" onClick={check3} />
+            <div>true<Checkbox color="secondary" onClick={check1} /></div>
+            <div>false<Checkbox color="success" onClick={check2} /></div>
             <Button onClick={searchPost}>seach</Button>
         </div>
     );
