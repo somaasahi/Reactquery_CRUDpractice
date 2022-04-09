@@ -10,11 +10,7 @@ import { useQuery } from "react-query";
 //     const { isLoading, error, data } = useQuery("todos", getTodos);
 
 // フックを関数の内部で使用する場合は、メソッド名をuseから始めないといけません
-  const getSearch = async () => {
-    const { data } = await axios.get("api/todoDetails/");
-    console.log(data);
-    return data;
-};
+
 
 function SearchBox(props) {
 
@@ -25,8 +21,21 @@ function SearchBox(props) {
         num3: false,
     };
 
+    const getSearch = async () => {
+        const { data } = await axios.get("api/searchDetails/", {
+            params: {
+                search: search.keyword,
+                num1: search.num1,
+                num2: search.num2,
+                num3: search.num3
+        }
+    });
+        console.log(data);
+        return data;
+    };
     const { isLoading, error, data } = useQuery("todoDetails", getSearch);
-    // console.log(data);
+
+
 
     const getForm = (event) => {
         search.keyword = event.target.value;

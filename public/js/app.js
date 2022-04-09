@@ -28523,49 +28523,55 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 
 
-var getSearch = /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-    var _yield$axios$get, data;
-
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.next = 2;
-            return axios.get("api/todoDetails/");
-
-          case 2:
-            _yield$axios$get = _context.sent;
-            data = _yield$axios$get.data;
-            console.log(data);
-            return _context.abrupt("return", data);
-
-          case 6:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function getSearch() {
-    return _ref.apply(this, arguments);
-  };
-}();
-
 function SearchBox(props) {
   var search = {
-    keyword: "",
+    keyword: "aa",
     num1: false,
     num2: false,
     num3: false
   };
 
+  var getSearch = /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+      var _yield$axios$get, data;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return axios.get("api/searchDetails/", {
+                params: {
+                  search: search.keyword,
+                  num1: search.num1,
+                  num2: search.num2,
+                  num3: search.num3
+                }
+              });
+
+            case 2:
+              _yield$axios$get = _context.sent;
+              data = _yield$axios$get.data;
+              console.log(data);
+              return _context.abrupt("return", data);
+
+            case 6:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function getSearch() {
+      return _ref.apply(this, arguments);
+    };
+  }();
+
   var _useQuery = (0,react_query__WEBPACK_IMPORTED_MODULE_1__.useQuery)("todoDetails", getSearch),
       isLoading = _useQuery.isLoading,
       error = _useQuery.error,
-      data = _useQuery.data; // console.log(data);
-
+      data = _useQuery.data;
 
   var getForm = function getForm(event) {
     search.keyword = event.target.value;
