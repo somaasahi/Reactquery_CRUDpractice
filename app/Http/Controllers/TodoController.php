@@ -7,8 +7,7 @@ use App\Http\Requests\Todo\UpdateRequest;
 use App\Models\Todo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-
-
+use Illuminate\Support\Facades\Validator;
 
 class TodoController extends Controller
 {
@@ -47,10 +46,21 @@ class TodoController extends Controller
 
     public function post(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'tiele' => 'required|min:2|max:5',
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->json(['message' => 'error']);
+
+        } else {
 
         $todo = new Todo();
         $todo->tiele = $request->get('tiele');
         $todo->save();
+
+        }
     }
 
     /**

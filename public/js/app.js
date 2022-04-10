@@ -28638,16 +28638,15 @@ function SearchBox(props) {
             case 3:
               _yield$axios$get2 = _context2.sent;
               data = _yield$axios$get2.data;
-              console.log(data);
-              _context2.next = 8;
+              _context2.next = 7;
               return queryClient.cancelQueries("todoDetails");
 
-            case 8:
+            case 7:
               queryClient.setQueryData("todoDetails", function (list) {
                 return list = data;
               });
 
-            case 9:
+            case 8:
             case "end":
               return _context2.stop();
           }
@@ -28905,6 +28904,11 @@ function TodoForm() {
   var mutation = (0,react_query__WEBPACK_IMPORTED_MODULE_1__.useMutation)(function () {
     return axios__WEBPACK_IMPORTED_MODULE_0___default().post("/api/todos/post", {
       tiele: todo.tiele
+    }).then(function (res) {
+      var response = res.data;
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("p", {
+        children: response
+      });
     });
   }, {
     onSettled: function onSettled() {
@@ -28923,6 +28927,7 @@ function TodoForm() {
     mutation.mutate();
   };
 
+  console.log;
   if (mutation.isLoading) return 'Loading...';
   if (mutation.isError) return mutation.error.message;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {

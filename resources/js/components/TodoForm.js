@@ -11,7 +11,12 @@ function TodoForm() {
 
     const mutation = useMutation(
         () =>
-        axios.post("/api/todos/post",{tiele: todo.tiele}),
+        axios.post("/api/todos/post",{tiele: todo.tiele}).then((res) => {
+            let response = res.data;
+
+            // return <p>{ response }</p>
+
+            }),
         {
         onSettled: () => {
             queryClient.invalidateQueries("todos");
@@ -32,6 +37,7 @@ function TodoForm() {
 
         mutation.mutate();
     }
+    console.log
 
     if (mutation.isLoading) return 'Loading...';
 
