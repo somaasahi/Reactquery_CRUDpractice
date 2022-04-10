@@ -1,28 +1,32 @@
 import { Button, CardContent, Checkbox, List, TextField } from "@mui/material";
-import { useQuery } from "react-query";
+import { list } from "postcss";
+import { useState } from "react";
+import { useQuery, useQueryClient } from "react-query";
 import SearchDetail from "./SearchDetail";
 
 
 function SearchBox(props) {
 
-    let search = {
-        keyword: "",
-        num1: false,
-        num2: false,
-    };
+    const [keyword, setKeyword] = useState("");
+    const [num1, setNum1] = useState(false);
+    const [num2, setNum2] = useState(false);
+
+    const queryClient = useQueryClient();
+
 
     const getSearch = async () => {
         const { data } = await axios.get("api/searchDetails/", {
             params: {
-                search: search.keyword,
-                num1: search.num1,
-                num2: search.num2
+                keyword: keyword,
+                num1: num1,
+                num2: num2
         }
-    });
-
+        });
         return data;
     };
     const { isLoading, error, data } = useQuery("todoDetails", getSearch);
+
+
 
     if (isLoading) return "Loading...";
 
@@ -30,26 +34,40 @@ function SearchBox(props) {
 
 
     const getForm = (event) => {
-        search.keyword = event.target.value;
+        setKeyword(event.target.value);
     };
 
     const check1 = (event) => {
-        if(search.num1) {
-            search.num1 = false;
+        if(num1) {
+            setNum1(false);
         }else{
-            search.num1 = true;
+            setNum1(true);
         }
     };
     const check2 = (event) => {
-        if(search.num2) {
-            search.num2 = false;
+        if(num2) {
+            setNum2(false);
         }else{
-            search.num2 = true;
+            setNum2(true);
         }
     };
 
-    const searchPost = () => {
+    const searchPost = async () => {
+        console.log(keyword);
+        const { data } = await axios.get("api/searchDetails/", {
+            params: {
+                keyword: keyword,
+                num1: num1,
+                num2: num2
+        }
+        });
+        console.log(data);
 
+        // queryClient.setQueryData("todoDetails", (list) =>
+        // list = getSearch()
+
+        // );
+        // console.log(list);
     }
 
     return (
@@ -59,7 +77,7 @@ function SearchBox(props) {
                 variant="outlined"
                 onChange={getForm}
             />
-            {search.num1 ? <div onClick={() => mutation.reset()}>updated!</div> : null}
+            {/* {search.num1 ? <div onClick={() => mutation.reset()}>updated!</div> : null} */}
             <div>true<Checkbox color="secondary" onClick={check1} /></div>
             <div>false<Checkbox color="success" onClick={check2} /></div>
             <Button onClick={searchPost}>seach</Button>

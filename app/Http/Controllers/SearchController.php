@@ -15,14 +15,13 @@ class SearchController extends Controller
         $false = $request->get('num2');
 
         $query = TodoDetail::query();
-
+Log::debug($keyword);
+Log::debug($true);
         if(!empty($keyword)) {
-            log::debug('key');
             $query->orWhere('name', 'LIKE', "%{$keyword}%");
         }
-        // log::debug($true);
+
         if(!$true) {
-            // log::debug('20');
             $query->orWhere('completed_flg', true);
         }
 

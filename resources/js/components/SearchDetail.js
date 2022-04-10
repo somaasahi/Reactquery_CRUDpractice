@@ -9,21 +9,10 @@ import {
 } from "@mui/material";
 import React from "react";
 
-
 function SearchDetail(props) {
-
-
-
     return (
-        <ListItem
-            key={props.id}
-        >
-            <ListItemButton>
-                <ListItemIcon>
-                    <Checkbox />
-                </ListItemIcon>
-                <ListItemText primary={props.detail.name} />
-            </ListItemButton>
+        <ListItem key={props.id}>
+            <ListItemText primary={props.detail.name} />
         </ListItem>
     );
 }
