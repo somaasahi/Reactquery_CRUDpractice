@@ -28638,12 +28638,16 @@ function SearchBox(props) {
             case 3:
               _yield$axios$get2 = _context2.sent;
               data = _yield$axios$get2.data;
-              console.log(data); // queryClient.setQueryData("todoDetails", (list) =>
-              // list = getSearch()
-              // );
-              // console.log(list);
+              console.log(data);
+              _context2.next = 8;
+              return queryClient.cancelQueries("todoDetails");
 
-            case 6:
+            case 8:
+              queryClient.setQueryData("todoDetails", function (list) {
+                return list = data;
+              });
+
+            case 9:
             case "end":
               return _context2.stop();
           }

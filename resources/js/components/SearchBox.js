@@ -61,13 +61,11 @@ function SearchBox(props) {
                 num2: num2
         }
         });
-        console.log(data);
 
-        // queryClient.setQueryData("todoDetails", (list) =>
-        // list = getSearch()
-
-        // );
-        // console.log(list);
+        await queryClient.cancelQueries("todoDetails");
+        queryClient.setQueryData("todoDetails", (list) =>
+        list = data
+        );
     }
 
     return (
