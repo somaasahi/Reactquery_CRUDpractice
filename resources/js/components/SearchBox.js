@@ -1,5 +1,4 @@
 import { Button, CardContent, Checkbox, List, TextField } from "@mui/material";
-import { list } from "postcss";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "react-query";
 import SearchDetail from "./SearchDetail";

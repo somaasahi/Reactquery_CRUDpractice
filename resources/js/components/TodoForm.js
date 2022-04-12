@@ -1,11 +1,15 @@
 import { Button, TextField } from "@mui/material";
 import axios from "axios";
 import { useQueryClient, useMutation } from "react-query";
+import { useState } from "react";
+import { isSet } from "lodash";
 
 
 
 
 function TodoForm() {
+
+    const [error, setError] = useState(false);
 
     const queryClient = useQueryClient();
 
@@ -13,8 +17,10 @@ function TodoForm() {
         () =>
         axios.post("/api/todos/post",{tiele: todo.tiele}).then((res) => {
             let response = res.data;
+            if(response.error !== 'undefined'){
+                setError(true);
+            }
 
-            // return <p>{ response }</p>
 
             }),
         {
@@ -37,9 +43,13 @@ function TodoForm() {
 
         mutation.mutate();
     }
-    console.log
+    const errorCut = (event) => {
 
-    if (mutation.isLoading) return 'Loading...';
+        console.log(error);
+    }
+
+
+    // if (mutation.isLoading) return 'Loading...';
 
     if (mutation.isError) return mutation.error.message;
 
@@ -54,6 +64,7 @@ function TodoForm() {
                 onChange={getForm}
             />
             <Button onClick={postForm}>add</Button>
+            { error ? <div onClick={errorCut} style>Error!</div> : null}
         </div>
     );
 }
