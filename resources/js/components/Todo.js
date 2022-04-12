@@ -1,8 +1,6 @@
 import { Card, CardContent, List, TextField } from '@mui/material';
 import React from 'react';
 import TodoDetail from './TodoDetail';
-import { useState } from "react";
-// import { useUpdateTodoMutateTask } from "../hooks/Todo/useUpdateTodoMutateTask";
 import axios from "axios";
 import { useMutation } from "react-query";
 
@@ -19,7 +17,6 @@ function Todo(props) {
       tiele: props.todo.tiele,
     };
 
-    // const { updateTodoMutation } = useUpdateTodoMutateTask();
     const eventUpdateTodo = (event) => {
 
         todo.tiele = event.target.value;

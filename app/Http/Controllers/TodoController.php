@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Todo\StoreRequest;
 use App\Http\Requests\Todo\UpdateRequest;
 use App\Models\Todo;
+use App\Models\TodoDetail;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 
@@ -50,16 +53,29 @@ class TodoController extends Controller
             'tiele' => 'required|min:2|max:5',
         ]);
 
+
         if ($validator->fails()) {
 
-            return response()->json(['message' => 'error']);
+            return response()->json(['message' => '投稿ルールを確認してください']);
 
         } else {
+            DB::beginTransaction();
 
-        $todo = new Todo();
-        $todo->tiele = $request->get('tiele');
-        $todo->save();
+            try {
 
+                $todo = new Todo();
+                $todo->tiele = $request->get('tiele');
+                $todo->save();
+                // if($request->get('tiele')){
+                //     throw new \Exception("エラーだよ");
+                // }
+                DB::commit();
+                return response()->json(['message' => '正常に投稿されました']);
+            } catch(Exception $exception) {
+                DB::rollBack();
+                $a = $exception->getMessage();
+                return response()->json(['message' => 'システムエラー']);
+            }
         }
     }
 
