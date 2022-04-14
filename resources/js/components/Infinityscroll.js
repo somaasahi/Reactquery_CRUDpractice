@@ -5,7 +5,7 @@ import SearchDetail from "./SearchDetail";
 import reactInfiniteScroller from "react-infinite-scroller";
 import { useInfiniteQuery } from "react-query";
 
-function SearchBox(props) {
+function InfinityScroll(props) {
 
     const [keyword, setKeyword] = useState("");
     const [num1, setNum1] = useState(false);
@@ -24,7 +24,7 @@ function SearchBox(props) {
         });
         return data;
     };
-    const { isLoading, error, data } = useQuery("todoDetails", getSearch);
+    const { isLoading, error, data } = useQuery("testDetails", getSearch);
 
 
 
@@ -63,7 +63,7 @@ function SearchBox(props) {
         });
 
         await queryClient.cancelQueries("todoDetails");
-        queryClient.setQueryData("todoDetails", (list) =>
+        queryClient.setQueryData("testDetails", (list) =>
         list = data
         );
     }
@@ -90,4 +90,4 @@ function SearchBox(props) {
     );
 }
 
-export default SearchBox;
+export default InfinityScroll;
