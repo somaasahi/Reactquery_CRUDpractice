@@ -5,7 +5,6 @@ import { useQuery } from "react-query";
 import axios from "axios";
 import TodoForm from "./TodoForm";
 import SearchBox from "./SearchBox";
-import InfinityScroll from "./Infinityscroll";
 
 const getTodos = async () => {
     const { data } = await axios.get("api/todos/");
@@ -22,7 +21,6 @@ function Home() {
 
     return (
         <div>
-            <InfinityScroll />
             <TodoForm />
             <Grid container spacing={2}>
                 {data.map((todo) => (

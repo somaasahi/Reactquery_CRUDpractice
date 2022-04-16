@@ -15,13 +15,16 @@ export default function Navigation() {
                         component="div"
                         sx={{ flexGrow: 1 }}
                     >
-                        ToDo管理アプリ
+                        ToDo管理アプリにeactqueryテストを添えて
                     </Typography>
                     <span>
                         <Link to="/">Todo</Link>
                     </span>
                     <span>
                         <Link to="/react">Example</Link>
+                    </span>
+                    <span>
+                        <Link to="/infinity">Infinity</Link>
                     </span>
                 </Toolbar>
             </AppBar>

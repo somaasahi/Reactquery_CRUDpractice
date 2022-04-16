@@ -8,6 +8,7 @@ import Navigation from "./Navigation";
 import Home from "./Home";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
+import Infinity from "./Infinity";
 
 const client = new QueryClient();
 
@@ -22,6 +23,7 @@ function Main() {
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/react" element={<Example />} />
+                            <Route path="/infinity" element={<Infinity />} />
                         </Routes>
                     </main>
                 </BrowserRouter>
