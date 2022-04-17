@@ -15,8 +15,7 @@ class SearchController extends Controller
         $false = $request->get('num2');
 
         $query = TodoDetail::query();
-Log::debug($keyword);
-Log::debug($true);
+
         if(!empty($keyword)) {
             $query->orWhere('name', 'LIKE', "%{$keyword}%");
         }

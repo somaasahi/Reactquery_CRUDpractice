@@ -2,8 +2,7 @@ import { Button, CardContent, Checkbox, List, TextField } from "@mui/material";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "react-query";
 import SearchDetail from "./SearchDetail";
-import reactInfiniteScroller from "react-infinite-scroller";
-import { useInfiniteQuery } from "react-query";
+
 
 function SearchBox(props) {
 

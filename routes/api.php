@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\InfinityController;
+use App\Http\Controllers\Testcontroller;
+use App\Http\Controllers\TestController as ControllersTestController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\TodoDetailController;
 use Illuminate\Http\Request;
@@ -25,3 +28,4 @@ Route::resource('todoDetails', TodoDetailController::class);
 
 Route::post('todos/post', [TodoController::class, 'post']);
 Route::get('searchDetails', 'App\Http\Controllers\Searchcontroller@search');
+Route::get('getInfinity', [InfinityController::class, 'index']);

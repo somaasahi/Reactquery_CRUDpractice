@@ -15,7 +15,7 @@ export default function Navigation() {
                         component="div"
                         sx={{ flexGrow: 1 }}
                     >
-                        ToDo管理アプリにeactqueryテストを添えて
+                        ToDo管理アプリにreactqueryテストを添えて
                     </Typography>
                     <span>
                         <Link to="/">Todo</Link>
