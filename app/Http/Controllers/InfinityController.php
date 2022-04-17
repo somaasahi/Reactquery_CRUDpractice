@@ -13,7 +13,7 @@ class InfinityController extends Controller
 
 
         $page = $request->get('page');
-        Log::debug($page);
+
 
         if($page == 1){
 
@@ -23,10 +23,10 @@ class InfinityController extends Controller
 
 
         }else{
-
-            $start = 15*$page;
-            $tests = Test::orderBy('id', 'ASC')->skip($start)->take(15)->get();
-            Log::debug('ok');
+            $page = $page - 1;
+            $start = 15 * $page;
+            $tests = Test::orderBy('id', 'ASC')->skip($start)->limit(15)->get();
+            Log::debug($page);
             return $tests;
         }
     }

@@ -9,21 +9,22 @@ import Home from "./Home";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Infinity from "./Infinity";
+import InfinityQuery from "./InfinityQuery";
 
-const client = new QueryClient();
+const queryClient = new QueryClient();
 
 function Main() {
     return (
         <BOX>
-            <QueryClientProvider client={client}>
+            <QueryClientProvider client={queryClient}>
                 <BrowserRouter>
                     <Navigation />
-
                     <main className={"m-5"}>
                         <Routes>
                             <Route path="/" element={<Home />} />
                             <Route path="/react" element={<Example />} />
                             <Route path="/infinity" element={<Infinity />} />
+                            <Route path="/infinityQuery" element={<InfinityQuery />} />
                         </Routes>
                     </main>
                 </BrowserRouter>

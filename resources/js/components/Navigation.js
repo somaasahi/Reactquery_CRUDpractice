@@ -26,6 +26,9 @@ export default function Navigation() {
                     <span>
                         <Link to="/infinity">Infinity</Link>
                     </span>
+                    <span>
+                        <Link to="/infinityQuery">InfinityQuery</Link>
+                    </span>
                 </Toolbar>
             </AppBar>
         </Box>

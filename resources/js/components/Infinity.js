@@ -10,13 +10,11 @@ function Infinity() {
     const [hasMore, setHasMore] = useStateIfMounted(true);
 
     const loadMore = async (page) => {
-        console.log(page);
         const response = await fetch(
             `http://localhost:8888/api/getInfinity?page=${page}`
         );
 
         const data = await response.json();
-        console.log(data.length);
 
         if (data.length < 1) {
             setHasMore(false);
@@ -32,7 +30,7 @@ function Infinity() {
     const items = (
         <ul>
             {list.map((value) => (
-                <li key={value.id}>{value.content}</li>
+                <li key={value.id}>No.{value.id} : {value.content}</li>
             ))}
         </ul>
     );
@@ -48,6 +46,7 @@ function Infinity() {
 
     return (
         <Box sx={{ width: "50%", height: 400, maxWidth: 360, bgcolor: "white", overflow: 'auto' }}>
+            <div>InfinityQuery without ReactQuery</div>
             <InfiniteScroll
                 loadMore={loadMore} //項目を読み込む際に処理するコールバック関数
                 hasMore={hasMore} //読み込みを行うかどうかの判定
