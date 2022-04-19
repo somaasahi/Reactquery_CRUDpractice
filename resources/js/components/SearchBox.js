@@ -13,6 +13,15 @@ function SearchBox(props) {
     const queryClient = useQueryClient();
 
 
+    const todos = queryClient.getQueryData('todos');
+    console.log(todos);
+    // can do it
+
+    const infinity = queryClient.getQueryData('infinity');
+    console.log(infinity);
+    // can not
+
+
     const getSearch = async () => {
         const { data } = await axios.get("api/searchDetails/", {
             params: {

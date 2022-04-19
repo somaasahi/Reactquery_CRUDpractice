@@ -28250,25 +28250,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_query__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-query */ "./node_modules/react-query/es/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
 
 
 function Example() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
     className: "container",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       className: "row justify-content-center",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
         className: "col-md-8",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
           className: "card",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "card-header",
             children: "Example Component"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
             className: "card-body",
             children: "I'm an example component!"
           })]
@@ -28281,7 +28283,7 @@ function Example() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Example);
 
 if (document.getElementById('app')) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Example, {}), document.getElementById('app'));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(Example, {}), document.getElementById('app'));
 }
 
 /***/ }),
@@ -28640,7 +28642,7 @@ function InfinityContent(props) {
     };
   }();
 
-  var _useInfiniteQuery = (0,react_query__WEBPACK_IMPORTED_MODULE_3__.useInfiniteQuery)("inifinity", fetchPosts, {
+  var _useInfiniteQuery = (0,react_query__WEBPACK_IMPORTED_MODULE_3__.useInfiniteQuery)("infinity", fetchPosts, {
     getNextPageParam: function getNextPageParam(lastPage, pages) {
       if (lastPage.nextPage < lastPage.totalPages) return lastPage.nextPage;
       return undefined;
@@ -28731,21 +28733,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
 /* harmony import */ var react_query__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-query */ "./node_modules/react-query/es/index.js");
-/* harmony import */ var _InfinityContent__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./InfinityContent */ "./resources/js/components/InfinityContent.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_query_devtools__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-query/devtools */ "./node_modules/react-query/devtools/index.js");
+/* harmony import */ var _InfinityContent__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./InfinityContent */ "./resources/js/components/InfinityContent.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
- // import { ReactQueryDevtools } from 'react-query/devtools'
+
+
 
 
 
 var client = new react_query__WEBPACK_IMPORTED_MODULE_2__.QueryClient();
 
 function InfinityQuery() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_query__WEBPACK_IMPORTED_MODULE_2__.QueryClientProvider, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_query__WEBPACK_IMPORTED_MODULE_2__.QueryClientProvider, {
       client: client,
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_InfinityContent__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_InfinityContent__WEBPACK_IMPORTED_MODULE_4__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(react_query_devtools__WEBPACK_IMPORTED_MODULE_3__.ReactQueryDevtools, {
+        initialIsOpen: false
+      })]
     })
   });
 }
@@ -28753,7 +28759,7 @@ function InfinityQuery() {
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (InfinityQuery);
 
 if (document.getElementById("app")) {
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(InfinityQuery, {}), document.getElementById("app"));
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render( /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(InfinityQuery, {}), document.getElementById("app"));
 }
 
 /***/ }),
@@ -28965,6 +28971,8 @@ function SearchBox(props) {
       setNum2 = _useState6[1];
 
   var queryClient = (0,react_query__WEBPACK_IMPORTED_MODULE_2__.useQueryClient)();
+  var todos = queryClient.getQueryData('infinity');
+  console.log(todos);
 
   var getSearch = /*#__PURE__*/function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {

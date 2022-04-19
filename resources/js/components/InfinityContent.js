@@ -31,7 +31,7 @@ function InfinityContent(props) {
     isError,
     isLoading,
     fetchNextPage
-  } = useInfiniteQuery("inifinity", fetchPosts, {
+  } = useInfiniteQuery("infinity", fetchPosts, {
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextPage < lastPage.totalPages) return lastPage.nextPage;
       return undefined;

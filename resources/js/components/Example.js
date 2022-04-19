@@ -1,7 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { useQueryClient } from 'react-query';
 
 function Example() {
+
+
     return (
         <div className="container">
             <div className="row justify-content-center">
