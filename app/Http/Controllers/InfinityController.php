@@ -25,7 +25,7 @@ class InfinityController extends Controller
         }else{
             $page = $page - 1;
             $start = 15 * $page;
-            $tests = Test::orderBy('id', 'ASC')->skip($start)->limit(15)->get();
+            $tests = Test::orderBy('id', 'ASC')->skip($start)->take(15)->get();
             Log::debug($page);
             return $tests;
         }

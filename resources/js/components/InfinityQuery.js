@@ -1,8 +1,8 @@
 
-import { Box } from "@mui/system";
 import React from "react";
 import ReactDOM from "react-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
+// import { ReactQueryDevtools } from 'react-query/devtools'
 import InfinityContent from "./InfinityContent";
 
 
@@ -15,6 +15,8 @@ function InfinityQuery() {
         <div>
             <QueryClientProvider client={client}>
             <InfinityContent />
+
+
                 </QueryClientProvider>
 
 

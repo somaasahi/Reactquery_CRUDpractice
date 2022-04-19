@@ -1,25 +1,37 @@
 import { Box } from "@mui/system";
+import axios from "axios";
 import InfiniteScroll from "react-infinite-scroller";
 import { useInfiniteQuery } from "react-query";
+import { useStateIfMounted } from "use-state-if-mounted";
+import InfinityList from "./InfinityList";
 
 
-function InfinityContent() {
+function InfinityContent(props) {
+
+    const [hasMore, setHasMore] = useStateIfMounted(true);
+
   const fetchPosts = async ({ pageParam = 1 }) => {
-      console.log(pageParam);
-    const response = await fetch(
-      `http://localhost:8888/api/getInfinity?page=${pageParam}`
+
+    const { data } = await axios.get("api/getInfinity/", {
+        params: {
+            page: pageParam
+    }}
     );
-    const results = await response.json();
-    return { results, nextPage: pageParam + 1, totalPages: 300 };
+    if (data.length < 1) {
+        setHasMore(false);
+        console.log('dead');
+        return;
+    }
+
+    return { data, nextPage: pageParam + 1, totalPages: 30 };
   };
 
   const {
     data,
-    isLoading,
     isError,
-    hasNextPage,
+    isLoading,
     fetchNextPage
-  } = useInfiniteQuery("posts", fetchPosts, {
+  } = useInfiniteQuery("inifinity", fetchPosts, {
     getNextPageParam: (lastPage, pages) => {
       if (lastPage.nextPage < lastPage.totalPages) return lastPage.nextPage;
       return undefined;
@@ -28,16 +40,19 @@ function InfinityContent() {
 
   return (
 
-    <Box sx={{ width: "50%", height: 400, maxWidth: 360, bgcolor: "white", overflow: 'auto' }}>
+    <Box sx={{ width: "50%", height: 700, maxWidth: 360, bgcolor: "white", overflow: 'auto' }}>
     <div>InfinityQuery with ReactQuery</div>
         {isLoading ? (
           <p>Loading...</p>
         ) : isError ? (
           <p>There was an error</p>
         ) : (
-          <InfiniteScroll hasMore={hasNextPage} loadMore={fetchNextPage}>
+          <InfiniteScroll
+          hasMore={hasMore}
+          loadMore={fetchNextPage}
+          useWindow={false}>
             {data.pages.map((page) =>
-              page.results.map((post) => <li key={post.id}>No.{post.id} :{post.content}</li>)
+              page.data.map((post) => <InfinityList key={post.id} post={post} />)
             )}
           </InfiniteScroll>
         )}
