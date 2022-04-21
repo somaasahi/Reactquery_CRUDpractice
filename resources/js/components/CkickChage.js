@@ -7,7 +7,7 @@ function ClickChange() {
 
     return (
         <div>
-           clickchage
+           clickchaged
         </div>
     );
 }
