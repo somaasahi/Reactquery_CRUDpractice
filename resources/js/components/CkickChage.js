@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 // import { useQueryClient } from 'react-query';
-
+// import"../../css/app.css";
 function ClickChange() {
 
 
     return (
-        <div>
-           clickchage
+        <div className='text-red-400'>
+            <p className='text-red-400'>clickchage</p>
+
         </div>
     );
 }

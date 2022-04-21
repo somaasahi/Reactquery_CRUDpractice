@@ -10,6 +10,10 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
 import Infinity from "./Infinity";
 import InfinityQuery from "./InfinityQuery";
+import ClickChange from "./CkickChage";
+import"../../css/app.css";
+
+
 
 const queryClient = new QueryClient();
 
@@ -25,6 +29,7 @@ function Main() {
                             <Route path="/react" element={<Example />} />
                             <Route path="/infinity" element={<Infinity />} />
                             <Route path="/infinityQuery" element={<InfinityQuery />} />
+                            <Route path="/ClickChange" element={<ClickChange />} />
                         </Routes>
                     </main>
                 </BrowserRouter>

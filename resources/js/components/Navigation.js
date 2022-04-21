@@ -29,6 +29,9 @@ export default function Navigation() {
                     <span>
                         <Link to="/infinityQuery">InfinityQuery</Link>
                     </span>
+                    <span>
+                        <Link to="/ClickChange">CkickChage</Link>
+                    </span>
                 </Toolbar>
             </AppBar>
         </Box>
