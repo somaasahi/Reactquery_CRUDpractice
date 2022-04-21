@@ -6,7 +6,7 @@ function ClickChange() {
 
 
     return (
-        <div>
+        <div className='text-red-400'>
             <p className='text-red-400'>clickchage</p>
 
         </div>
